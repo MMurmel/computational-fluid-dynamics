@@ -1,0 +1,64 @@
+\chapter{Klassifizierung partieller Differenziagleichungen}
+\lecture{2}{26.04.2021}{DGLs}
+
+Im Rahmen der Strömungsmechanik sind verschiedene gekoppelte (partielle) Differentialgleichungen relevant.
+Insbesondere die Kontinuitäts- Impuls- und Energiegleichung müssen fast immer im Zusammenhang betrachtet werden.
+Außerdem sind diese Gleichungen teilweise von verschiedenen Graden und im Allgemeinen hochgradig nichtlinear.
+
+\section{Transportprozesse in Fluiden}
+Wir betrachten eine beliebige physikalische Größe $u$ und deren Transport in einem Fluid.
+
+Man nennt die folgende Gleichung Konvektionsgleichung:
+\[
+\frac{\partial u}{\partial t} + \vec{v} \cdot \nabla u = 0
+.\]
+Dabei ist $\vec{v}$ der Geschwindigkeitsvektor der Strömung.
+Man nennt solche Gleichungen \textbf{hyperbolische} Gleichungen.
+Ein beispiel ist eine einfache Welle, bei der die Größe mit dem Geschwindigkeitsfeld des Fluids einfach mittransportiert wird.
+Die Lösung einer solchen einfachen Wellengleichung ist $u = u_0(\vec{x} - \vec{v}t)$.
+\newline
+
+Betrachten wir nun die sog. Diffusionsprozesse.
+Auch ohne Konvektion tritt oft eine zeitliche Abhängigkeit in der Lösung auf.
+Aufgrund von Konzentrationsgradienten einer Größe kommt es zu ihrem Transport durch Diffusion.
+\[
+	\frac{\partial u}{\partial t} = \nabla \cdot (\nu \nabla u) , \nu > 0
+.\]
+Für $\nu = \text{const.}$ ergibt sich 
+\[
+\frac{\partial u}{\partial t} = \nu \nabla^2 u
+.\]
+Dabei ist $\nu$ %TODO 
+Die Diffusionsgleichungen sind \textbf{parabolische} Gleichungen.
+Die Wirkung von Diffusionsprozessen hängt stark von der Entfernung zur Ursache ab.
+Im Moment nach der Anfangsbedingung bewirkt ein Gradient in der Größe $u$ bereits eine Änderung in allen Punkten im Berechnungsgebiet
+(wenn auch mit abnehmender Entfernung nur unwesentlich größer als 0).
+Die Lösungen einer solchen parabolischen Gleichung ist also keine Welle.
+Die Ausbreitung der betrachteten Größe erfolgt aufgrund von Gradienten und in alle Richtungen!
+\newline
+
+Mit dem Diffusionsgleichgewicht für $t \to \infty$:
+\[
+	\nabla \cdot (\nu \nabla u) = f(\vec{x})
+.\]
+lassen sich weitere Effekte wie Reibung in Fluiden beschreiben.
+Man nennt solche Gleichungen \textbf{elliptische} Gleichungen.
+Da diese Gleichungen keine Zeitabhängigkeiten mehr besitzt, kann von einer Wellenlösung keine Rede sein.
+
+\section{Gleichungen zweiter Ordnung}
+Differentialgleichungen 2. Ordnung haben die allgemeine Form
+\[
+	a \frac{\partial ^2u}{\partial x^2} + 2b \frac{\partial^2 u}{\partial x \partial y} + c \frac{\partial^2 u}{\partial y^2} = f(x,y,u,\partial_x u, \partial_y u)
+.\]
+Man kann nun Störungen dieser Gleichung betrachten und erhält so eine Fluktuation $u'$ und eine linearisierte Störungsgleichung:
+ \[
+	 a_0 \frac{\partial^2 u'}{\partial x^2} + 2b_0 \frac{\partial^2 u}{\partial x \partial y} + c_0 \frac{\partial^2 u}{\partial y^2} = 0
+.\]
+Dabei sind jetzt $a,b,c$ konstant.
+Man diese Linearisierung selbst für die allgemeine Form stets durchführen!
+
+Für diese gestörten Gleichungen kann man dann eine Wellenlösung suchen:
+\section{Systeme erster Ordnung}
+
+\section{Rand- und Anfangsbedingungen}
+
