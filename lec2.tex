@@ -2,62 +2,117 @@
 \lecture{2}{26.04.2021}{DGLs}
 
 Im Rahmen der Strömungsmechanik sind verschiedene gekoppelte (partielle) Differentialgleichungen relevant.
-Insbesondere die Kontinuitäts- Impuls- und Energiegleichung müssen fast immer im Zusammenhang betrachtet werden.
+Insbesondere die Kontinuitäts-, Impuls- und Energiegleichung müssen fast immer im Zusammenhang betrachtet werden.
 Außerdem sind diese Gleichungen teilweise von verschiedenen Graden und im Allgemeinen hochgradig nichtlinear.
 
 \section{Transportprozesse in Fluiden}
+\subsection{Konvektion}
 Wir betrachten eine beliebige physikalische Größe $u$ und deren Transport in einem Fluid.
 
 Man nennt die folgende Gleichung Konvektionsgleichung:
 \[
 \frac{\partial u}{\partial t} + \vec{v} \cdot \nabla u = 0
 .\]
-Dabei ist $\vec{v}$ der Geschwindigkeitsvektor der Strömung.
-Man nennt solche Gleichungen \textbf{hyperbolische} Gleichungen.
-Ein beispiel ist eine einfache Welle, bei der die Größe mit dem Geschwindigkeitsfeld des Fluids einfach mittransportiert wird.
-Die Lösung einer solchen einfachen Wellengleichung ist $u = u_0(\vec{x} - \vec{v}t)$.
-\newline
+Der Term $\frac{\partial u}{\partial t}$ beschreibt die lokale zeitliche Ableitung.
+Den Term $\vec{v} \cdot \nabla u$ nennt man „konvektive Ableitung“,
+wobei $\vec{v}$ den Geschwindigkeitsvektor der Strömung darstellt.
 
+Konvektionsgleichungen bilden den Grundtyp der \textbf{hyperbolischen} Differentialgleichungen.
+Diese erstrecken sich darüber hinaus auch auf die Erhaltungsgleichungen,
+die eine allgemeinere Form der Konvektionsgleichungen bilden und für die Strömungsmechanik äußerst bedeutend sind.
+Sie besitzen die Form:
+\[
+	\frac{\partial u}{\partial t} + \frac{\partial f(u)}{\partial x} = \frac{\partial u}{\partial t} + \underbrace{f'(u)}_{\mathrel{\widehat{=}}v} \frac{\partial u}{\partial x} = 0
+.\]
+Darauf soll an dieser Stelle jedoch nicht weiter eingegangen werden.
+\newpage
+Konvektionsgleichungen besitzen sogenannte „einfache Wellenlösungen“ der Form:
+\[
+	u = u_0 \left( \vec{x} - \vec{v}t \right)
+.\]
+Die Lösung für $u$ ist also eine Lösung für die Rand- und Anfangswertbedingungen $u_0$,
+die mit der Zeit einfach durch die Geschwindigkeit $\vec{v}$ im Raum verschoben wird.
+
+\begin{merke}
+	\begin{enumerate}
+		\item Hyperbolische Gleichungen besitzen eine zeitartige Variable (in den obenstehenden Gleichungen tatsächlich immer die Zeit).
+		\item Die Lösungen für hyperbolische Gleichungen können komplett aus Wellenlösungen zusammengesetzt werden.
+	\end{enumerate}
+\end{merke}
+
+\subsection{Diffusion}
 Betrachten wir nun die sog. Diffusionsprozesse.
 Auch ohne Konvektion tritt oft eine zeitliche Abhängigkeit in der Lösung auf.
-Aufgrund von Konzentrationsgradienten einer Größe kommt es zu ihrem Transport durch Diffusion.
+Aufgrund von (Konzentrations-) Gradienten einer Größe kommt es zu ihrem Transport durch Diffusion.
+Die folgende Gleichung nennt man Diffusionsgleichung:
 \[
 	\frac{\partial u}{\partial t} = \nabla \cdot (\nu \nabla u) , \nu > 0
 .\]
+Man nennt $\nabla \cdot (\nu \nabla u)$ den Diffusionsterm und $\nu$ den Diffusionskoeffizienten.
+$\nu > 0$ folgt aus dem zweiten Hauptsatz der Thermodynamik, wobei  $\nu = 0$ für den idealisierten Fall möglich ist.
 Für $\nu = \text{const.}$ ergibt sich 
 \[
 \frac{\partial u}{\partial t} = \nu \nabla^2 u
 .\]
-Dabei ist $\nu$ %TODO 
-Die Diffusionsgleichungen sind \textbf{parabolische} Gleichungen.
-Die Wirkung von Diffusionsprozessen hängt stark von der Entfernung zur Ursache ab.
-Im Moment nach der Anfangsbedingung bewirkt ein Gradient in der Größe $u$ bereits eine Änderung in allen Punkten im Berechnungsgebiet
-(wenn auch mit abnehmender Entfernung nur unwesentlich größer als 0).
-Die Lösungen einer solchen parabolischen Gleichung ist also keine Welle.
-Die Ausbreitung der betrachteten Größe erfolgt aufgrund von Gradienten und in alle Richtungen!
+Im Gegensatz zu Konvektionsgleichungen fällt auf, dass es keine ausgezeichnete Transportrichtung oder -geschwindigkeit gibt.
+Außerdem gibt es eine Momentanwirkung in \textit{jedem} Bereich des Rechengebietes.
+Von einer Wellenlösung kann daher keine Rede sein.
 \newline
+Diffusionsgleichungen bilden den Grundtyp der \textbf{parabolischen} Differentialgleichungen.
 
-Mit dem Diffusionsgleichgewicht für $t \to \infty$:
+\begin{merke}
+	\begin{enumerate}
+		\item Parabolische Gleichungen besitzen eine zeitartige Variable.
+		\item Es existieren keine Wellenlösungen (nur sog. „degenerierte Welle“, die hier aber nicht weiter relevant sein sollen.)
+	\end{enumerate}
+\end{merke}
+
+\subsection{Elliptische Gleichungen}
+Betrachten wir nun einen Diffusionsprozess, der sich asymptotisch an ein Gleichgewicht annähert, also für den für $t \to \infty$ gilt:
 \[
 	\nabla \cdot (\nu \nabla u) = f(\vec{x})
 .\]
-lassen sich weitere Effekte wie Reibung in Fluiden beschreiben.
-Man nennt solche Gleichungen \textbf{elliptische} Gleichungen.
-Da diese Gleichungen keine Zeitabhängigkeiten mehr besitzt, kann von einer Wellenlösung keine Rede sein.
+Dabei ist $f(\vec{x})$ ein sogenannter „Quellterm“, der beschreiben kann, dass keine Gleichverteilung vorliegen muss (sondern nur \textit{zeitliches} Gleichgewicht).
+Sie bilden den Grundtyp der \textbf{elliptischen} Differentialgleichungen.
+\begin{merke}
+	\begin{enumerate}
+		\item Elliptische Gleichungen besizten \textit{keine} zeitartige Variable.
+		\item Elliptische Gleichungen besizten \textit{keine} Wellenlösungen.
+	\end{enumerate}
+\end{merke}
+
+Bisher haben wir die Typen von DGLs anhand ihrer Eigenschaften bezüglich Existenz von zeitartigen Variablen und Existenz von Wellenlösungen unterschieden.
+Diese Unterscheidung fiel an dieser Stelle leich, da wir die „Reinkulturen“ hyperbolische, parabolische und elliptischer Gleichungen betrachtet haben.
+Auch wenn diese Einteilung im Allgemeinen weder so einfach noch eindeutig ist, wollen wir zunächst weiter versuchen ihr zu folgen.
 
 \section{Gleichungen zweiter Ordnung}
 Differentialgleichungen 2. Ordnung haben die allgemeine Form
 \[
 	a \frac{\partial ^2u}{\partial x^2} + 2b \frac{\partial^2 u}{\partial x \partial y} + c \frac{\partial^2 u}{\partial y^2} = f(x,y,u,\partial_x u, \partial_y u)
 .\]
-Man kann nun Störungen dieser Gleichung betrachten und erhält so eine Fluktuation $u'$ und eine linearisierte Störungsgleichung:
+Man kann nun Störungen $\tilde{u} = u + u'$ dieser Gleichung betrachten und erhält so eine Fluktuation $u'$ (keine Ableitung) und eine linearisierte Störungsgleichung:
  \[
 	 a_0 \frac{\partial^2 u'}{\partial x^2} + 2b_0 \frac{\partial^2 u}{\partial x \partial y} + c_0 \frac{\partial^2 u}{\partial y^2} = 0
 .\]
 Dabei sind jetzt $a,b,c$ konstant.
-Man diese Linearisierung selbst für die allgemeine Form stets durchführen!
 
-Für diese gestörten Gleichungen kann man dann eine Wellenlösung suchen:
+Für diese gestörten Gleichungen kann man dann eine Wellenlösung suchen.
+Diese existieren unter der Bedingung, dass gilt:
+\[
+	u' \propto e^{i(n_x x + n_y y)}
+.\]
+Eingesetzt gelangt man zu einer Gleichung für $n_x$ und $n_y$:
+ \[
+	an_x^2 + 2b n_x n_y + cn_x^2 = 0
+.\]
+Und wir können feststellen, dass Wellenlösungen in Abhängigkeit von der Diskriminante $D = b^2 - ac$ existieren:
+\begin{itemize}
+	\item $D > 0$: zwei unabhängige Wellenlösungen
+	\item $D = 0$: degenerierte Welle
+	\item $D < 0$: keine Wellenlösung
+\end{itemize}
+
+% Minute 24
 \section{Systeme erster Ordnung}
 
 \section{Rand- und Anfangsbedingungen}
