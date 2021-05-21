@@ -112,8 +112,83 @@ Und wir können feststellen, dass Wellenlösungen in Abhängigkeit von der Diskr
 	\item $D < 0$: keine Wellenlösung
 \end{itemize}
 
-% Minute 24
-\section{Systeme erster Ordnung}
+\begin{beispiel}
+	Wir betrachten die Wellengleichung
+	\[
+		\frac{\partial^2 \phi}{\partial t^2} - v^2 \frac{\partial^2 \phi}{\partial x^2} = 0
+	.\]
+	Der Vergleich mit der allgemeinen Form liefert die Ähnlichkeiten $t \mathrel{\widehat{=}} x$ und $x \mathrel{\widehat{=}} y$.
+	Mit den Koeffizienten $a = 1, b = 0, c = -v^2$ gelangen wir zu  $D = v^2 > 0$.
+	Die Gleichung ist also hyperbolisch.
 
+	Ansatz: Wir suchen eine Größe $\phi' \propto e^{i(n_t t + n_x x)}$.
+	Unser Ansatz lautet:
+	$\underline{n} =
+	\begin{pmatrix}
+		n_t\\
+		n_x
+	\end{pmatrix}$.
+	Eingesetzt in die DGL liefert das nach Kürzen:
+	\[
+		n_t^2 - v^2 n_x^2 = 0
+	.\]
+	Umstellen und lösen nach $n_t$:
+	\[
+		n_t = \pm v n_t
+	.\]
+	Wir erhalten die zwei linear unabhängigen Lösungen:
+	\begin{align*}
+		\underline{n_1} &= \begin{pmatrix}v \\ 1\end{pmatrix}, \\
+		\underline{n_2} &= \begin{pmatrix}-v \\ 1\end{pmatrix}
+	\end{align*}
+	also:
+	\begin{align*}
+		\phi_1 &= \widehat{\phi}_1 \cdot e^{i(n_t t + n_x x)} \\
+		\phi_2 &= \widehat{\phi}_2 \cdot e^{i(n_t t - n_x x)} \\
+	\end{align*}
+\end{beispiel}
+
+\section{Systeme erster Ordnung}
+Die Erhaltungsgleichungen können häufig als Systeme erster Ordnung aufgefasst werden,
+da Diffusion, Reibung und Wärmeleitung oft nur untergeordnete Rollen spielen.
+Man kann sich daher auf die konvektiven Prozesse beschränken:
+\[
+	\frac{\partial \bm{U}}{\partial t} + \frac{\partial \bm{F(U)}}{\partial x} = 0
+.\]
+Dabei ist $\bm{U}$ der Vektor der Erhaltungsgrößen und  $\bm{F(U)}$ der Vektor der zugehörigen konvektiven Flüsse.
+
+Die Einführung der (von der Lösung $\bm{U}$ abhängigen) \textit{Jacobi-Matrix} $A_{ij} = \frac{\partial F_i}{\partial U_j}$ ermöglicht den Übergang zu einer quasilinearen Form:
+\[
+	\frac{\partial \bm{U}}{\partial t} + \bm{A(U)} \cdot \frac{\partial \bm{U}}{\partial x} = 0
+.\]
+
+Der Typ dieses Systems richtet sich nach den Eigenwerten (EW) und den Eigenvektoren (EV) der Matrix $\bm{A(U)}$:
+\begin{itemize}
+	\item hyperbolisch: alle EW sind reell und alle EV sind linear unabhängig
+	\item parabolisch: alle EW sind reell, aber die EV sind linear abhängig
+	\item elliptisch: alle EW sind komplex
+	\item hybrid es gibt reelle und komplexe EW
+\end{itemize}
+\begin{notation}
+	Sei $\bm{\Lambda} = \func{diag}(\lambda_1, \ldots, \lambda_d)$ die Diagonalmatrix der EW,
+	$\bm{R}$ die Spaltenmatrix der rechten EV und $\bm{L}$ die Zeilenmatrix der linken EV, also
+	\[
+	\bm{R} =
+	\begin{bmatrix}
+		\bm{r_1} & \cdots & \bm{r_d}
+	\end{bmatrix},
+	\bm{L} =
+	\begin{bmatrix}
+		\bm{l_1} \\ \vdots \\ \bm{l_d}
+	\end{bmatrix}
+	= \bm{R}^{-1}
+	.\]
+
+	Damit ergibt sich die \textit{Spektralzerlegung} der Jacobi-Matrix zu
+	\[
+		\bm{A} = \bm{R \Lambda L}
+	.\]
+\end{notation}
+% Minute 55
 \section{Rand- und Anfangsbedingungen}
 
