@@ -149,6 +149,10 @@ Und wir können feststellen, dass Wellenlösungen in Abhängigkeit von der Diskr
 \end{beispiel}
 
 \section{Systeme erster Ordnung}
+\begin{notation}
+	Im Folgenden wird oft die Notation $\partial_{x}{\phi}$ für $\frac{\partial \phi}{\partial x}$ verwendet.
+\end{notation}
+\subsection{Erhaltungsgleichungen}
 Die Erhaltungsgleichungen können häufig als Systeme erster Ordnung aufgefasst werden,
 da Diffusion, Reibung und Wärmeleitung oft nur untergeordnete Rollen spielen.
 Man kann sich daher auf die konvektiven Prozesse beschränken:
@@ -158,9 +162,9 @@ Man kann sich daher auf die konvektiven Prozesse beschränken:
 Dabei ist $\bm{U}$ der Vektor der Erhaltungsgrößen und  $\bm{F(U)}$ der Vektor der zugehörigen konvektiven Flüsse.
 
 Die Einführung der (von der Lösung $\bm{U}$ abhängigen) \textit{Jacobi-Matrix} $A_{ij} = \frac{\partial F_i}{\partial U_j}$ ermöglicht den Übergang zu einer quasilinearen Form:
-\[
-	\frac{\partial \bm{U}}{\partial t} + \bm{A(U)} \cdot \frac{\partial \bm{U}}{\partial x} = 0
-.\]
+\begin{equation}\label{eq:1}
+	\partial_{t}{\bm{U}} + \bm{A}(\bm{U}) \cdot \partial_{x}{\bm{U}} = 0
+\end{equation}
 
 Der Typ dieses Systems richtet sich nach den Eigenwerten (EW) und den Eigenvektoren (EV) der Matrix $\bm{A(U)}$:
 \begin{itemize}
@@ -189,6 +193,26 @@ Der Typ dieses Systems richtet sich nach den Eigenwerten (EW) und den Eigenvekto
 		\bm{A} = \bm{R \Lambda L}
 	.\]
 \end{notation}
-% Minute 55
-\section{Rand- und Anfangsbedingungen}
+Wir überführen \ref{eq:1} in Diagonalform und führen eine charakteristische Variable $d\bm{Z} = \bm{L} d \bm{U}$ ein:
+\[
+	\partial_{t}{\bm{Z}} + \bm{\Lambda}(\bm{U}) \cdot \partial_{x}{\bm{Z}} = 0
+.\]
 
+Für Systeme mit konstanter Koeffizientenmatrix $\bm{A}$ ergeben sich die charakteristischen Variablen zu:
+\[
+\bm{Z} = \left[ Z_1 \cdots Z_d \right]^{T} = \int \bm{L} d \bm{U} = \bm{LU}
+\]
+und wir erhalten entkoppelte Konvektionsgleichungen mit konstanter Geschwindigkeit $\lambda_k$.
+Die Wellenlösungen ergeben sich damit zu:
+\[
+	Z_k(x,t) = Z_{k,0}(x - \lambda_k t)
+.\]
+Diese können über eine Rücktransformation wieder zusammengesetzt werden:
+\[
+\bm{U} = \bm{R} \bm{Z}
+.\]
+Eine Bezeichnung des Systems als \textit{hyperbolisch} ist also im Falle der konstanten Jacobi-Matrix gerechtfertigt,
+denn die Lösung lässt sich vollständig aus Wellengleichungen zusammensetzen.
+
+\section{Rand- und Anfangsbedingungen}
+%Video useless?
